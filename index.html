@@ -22,7 +22,7 @@
         text-align: left;
         font-size: 1rem;
       }
-      
+
       #button {
         width: 100%;
         height: 2rem;
@@ -37,21 +37,31 @@
     <p id="anime"></p>
     <p id="character"></p>
     <p id="quote"></p>
-    <input value="New Quote" onclick="newQuote" id="button"/>
+    <input type="button" value="New Quote" id="button" />
     <script>
       newQuote = () => {
         fetch("https://animechan.vercel.app/api/random")
           .then((response) => response.json())
           .then((quote) => printResults(quote));
-      }
-      
+      };
+
       newQuote();
+
+      const button = document.getElementById("button");
+
+      button.addEventListener("click", () => {
+        newQuote();
+        button.value = "Loading...";
+        button.disabled = true;
+      });
 
       printResults = (data) => {
         document.getElementById("anime").innerHTML = "Anime: " + data.anime;
         document.getElementById("character").innerHTML =
           "Character: " + data.character;
         document.getElementById("quote").innerHTML = "Quote: " + data.quote;
+        button.value = "New Quote";
+        button.disabled = false;
       };
     </script>
   </body>
