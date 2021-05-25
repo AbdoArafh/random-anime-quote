@@ -22,6 +22,11 @@
         text-align: left;
         font-size: 1rem;
       }
+      
+      button {
+        width: 100%;
+        height: 2rem;
+      }
     </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,10 +37,15 @@
     <p id="anime"></p>
     <p id="character"></p>
     <p id="quote"></p>
+    <button onClick="newQuote">New Quote</button>
     <script>
-      fetch("https://animechan.vercel.app/api/random")
-        .then((response) => response.json())
-        .then((quote) => printResults(quote));
+      newQuote = () => {
+        fetch("https://animechan.vercel.app/api/random")
+          .then((response) => response.json())
+          .then((quote) => printResults(quote));
+      }
+      
+      newQuote();
 
       printResults = (data) => {
         document.getElementById("anime").innerHTML = "Anime: " + data.anime;
