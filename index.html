@@ -23,7 +23,7 @@
         font-size: 1rem;
       }
       
-      button {
+      #button {
         width: 100%;
         height: 2rem;
       }
@@ -37,7 +37,7 @@
     <p id="anime"></p>
     <p id="character"></p>
     <p id="quote"></p>
-    <button onclick="() => newQuote()">New Quote</button>
+    <input value="New Quote" onclick="newQuote" id="button"/>
     <script>
       newQuote = () => {
         fetch("https://animechan.vercel.app/api/random")
