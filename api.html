@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Maven Pro", cursive;
+        text-align: center;
+        font-size: 3rem;
+      }
+
+      #character {
+        font-family: "Maven Pro";
+        text-align: left;
+        font-size: 1rem;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anime Quote API</title>
+  </head>
+  <body>
+    <p id="anime"></p>
+    <p id="character"></p>
+    <p id="quote"></p>
+    <script>
+      fetch("https://animechan.vercel.app/api/random")
+        .then((response) => response.json())
+        .then((quote) => printResults(quote));
+
+      printResults = (data) => {
+        document.getElementById("anime").innerHTML = "Anime: " + data.anime;
+        document.getElementById("character").innerHTML =
+          "Character: " + data.character;
+        document.getElementById("quote").innerHTML = "Quote: " + data.quote;
+      };
+    </script>
+  </body>
+</html>
