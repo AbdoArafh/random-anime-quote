@@ -37,7 +37,7 @@
     <p id="anime"></p>
     <p id="character"></p>
     <p id="quote"></p>
-    <button onclick="newQuote">New Quote</button>
+    <button onclick="() => newQuote()">New Quote</button>
     <script>
       newQuote = () => {
         fetch("https://animechan.vercel.app/api/random")
