@@ -57,9 +57,9 @@
           .then((quote) => printResults(quote));
       };
 
-      newQuote();
-
       const button = document.getElementById("button");
+      
+      newQuote();
 
       button.addEventListener("click", newQuote);
 
