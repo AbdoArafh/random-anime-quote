@@ -50,6 +50,8 @@
     <input type="button" value="New Quote" id="button" />
     <script>
       newQuote = () => {
+        button.value = "Loading...";
+        button.disabled = true;
         fetch("https://animechan.vercel.app/api/random")
           .then((response) => response.json())
           .then((quote) => printResults(quote));
@@ -59,11 +61,7 @@
 
       const button = document.getElementById("button");
 
-      button.addEventListener("click", () => {
-        newQuote();
-        button.value = "Loading...";
-        button.disabled = true;
-      });
+      button.addEventListener("click", newQuote);
 
       printResults = (data) => {
         document.getElementById("anime").innerHTML = "Anime: " + data.anime;
